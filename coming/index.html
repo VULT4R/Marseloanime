@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>marselo anime</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500;800&display=swap" rel="stylesheet">
+<style>
+  :root { color-scheme: dark; --bg:#000; --fg:#f2f3ff; --dim:#6b6f8f; --blurple:#5865f2;
+    box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px); }
+  *,*::before,*::after { box-sizing:inherit; }
+  html,body { height:100%; margin:0; background:var(--bg); color:var(--fg);
+    font-family:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace; overflow:hidden; }
+  main { height:100%; display:grid; place-items:center; text-align:center; position:relative; }
+  .stage { grid-area:1/1; display:flex; flex-direction:column; align-items:center; justify-content:center; width:100%; padding:0 4vw; }
+
+  #ascii { margin:0; font-size:min(5vw,56px); line-height:1.05; font-weight:800; color:var(--blurple);
+    text-shadow:0 0 24px rgba(88,101,242,.65); white-space:pre; transition:opacity 1.3s ease, filter 1.3s ease, transform 1.3s ease; }
+  #ascii.out { opacity:0; filter:blur(18px); transform:scale(1.08); }
+
+  #count { opacity:0; visibility:hidden; transition:opacity 1.6s ease; }
+  #count.in { opacity:1; visibility:visible; }
+  h1 { margin:0 0 4vh; font-weight:300; font-size:clamp(1.4rem,4vw,2.8rem); letter-spacing:.02em; }
+  h1 b { font-weight:800; color:var(--blurple); text-shadow:0 0 30px rgba(88,101,242,.8); }
+  .units { display:flex; flex-wrap:wrap; justify-content:center; gap:3vh clamp(1.2rem,4vw,4rem); }
+  .unit { min-width:2.4ch; }
+  .num { display:block; font-size:clamp(3.6rem,12vw,10rem); font-weight:800; line-height:1; font-variant-numeric:tabular-nums; }
+  .lab { display:block; margin-top:.6rem; font-size:clamp(.8rem,1.6vw,1.1rem); color:var(--dim); }
+  .units .unit:nth-child(-n+2) .num { text-shadow:0 0 40px rgba(88,101,242,.55); }
+  .foot { margin-top:6vh; color:var(--dim); font-size:clamp(.8rem,1.5vw,1rem); }
+  .tick { animation:pulse 1s steps(1) infinite; }
+  @keyframes pulse { 50% { opacity:.25; } }
+  @media (prefers-reduced-motion:reduce){ .tick{animation:none} #ascii,#count{transition:none} }
+</style>
+</head>
+<body>
+<main>
+  <section class="stage" aria-hidden="true"><pre id="ascii"></pre></section>
+  <section class="stage" id="count" aria-live="off">
+    <h1><b>Discord Server</b> is coming soon</h1>
+    <div class="units">
+      <div class="unit"><span class="num" id="d">000</span><span class="lab">days</span></div>
+      <div class="unit"><span class="num" id="h">00</span><span class="lab">hours</span></div>
+      <div class="unit"><span class="num" id="m">00</span><span class="lab">minutes</span></div>
+      <div class="unit"><span class="num" id="s">00</span><span class="lab">seconds</span></div>
+    </div>
+    <p class="foot">Someday it should<span class="tick"> _</span></p>
+  </section>
+</main>
+<script>
+(function () {
+  var F = {
+    C:["████","█   ","█   ","█   ","████"], O:["████","█  █","█  █","█  █","████"],
+    M:["█   █","██ ██","█ █ █","█   █","█   █"], I:["███"," █ "," █ "," █ ","███"],
+    N:["█   █","██  █","█ █ █","█  ██","█   █"], G:["████","█   ","█ ██","█  █","████"],
+    S:["████","█   ","████","   █","████"]
+  };
+  function word(w){ var rows=[]; for(var r=0;r<5;r++){ rows.push(w.split('').map(function(ch){return F[ch][r];}).join(' ')); } return rows; }
+  var a = word('COMING'), b = word('SOON'), W = a[0].length;
+  b = b.map(function(l){ var p=Math.floor((W-l.length)/2); return ' '.repeat(p)+l+' '.repeat(W-l.length-p); });
+  var rows = a.concat([' '.repeat(W)], b), H = rows.length;
+  var el = document.getElementById('ascii'), count = document.getElementById('count');
+  var glyphs = '░▒▓/\\<>_#', reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function draw(p){
+    var out=[];
+    for(var r=0;r<H;r++){ var line='';
+      for(var c=0;c<W;c++){ var ch=rows[r][c];
+        if(ch===' '){ line+=' '; }
+        else if(c < p-5){ line+=ch; }
+        else if(c < p){ line+=glyphs[Math.floor(Math.random()*glyphs.length)]; }
+        else { line+=' '; } }
+      out.push(line); }
+    el.textContent = out.join('\n');
+  }
+
+  function reveal(){ count.classList.add('in'); }
+  if (reduce) { draw(W+6); reveal(); el.style.display='none'; }
+  else {
+    var start=null, dur=2600;
+    (function step(t){
+      if(start===null) start=t;
+      var k=Math.min((t-start)/dur,1), eased=1-Math.pow(1-k,3);
+      draw(eased*(W+6));
+      if(k<1){ requestAnimationFrame(step); }
+      else { draw(W+6);
+        setTimeout(function(){ el.classList.add('out'); setTimeout(reveal,700); }, 1400); }
+    })(performance.now());
+  }
+
+  var target = new Date(2027,0,1,0,0,0).getTime();
+  var D=document.getElementById('d'),Hh=document.getElementById('h'),M=document.getElementById('m'),S=document.getElementById('s');
+  function pad(n,l){ n=String(n); while(n.length<l) n='0'+n; return n; }
+  function tick(){
+    var ms=Math.max(0,target-Date.now()), s=Math.floor(ms/1000);
+    D.textContent=pad(Math.floor(s/86400),3); Hh.textContent=pad(Math.floor(s%86400/3600),2);
+    M.textContent=pad(Math.floor(s%3600/60),2); S.textContent=pad(s%60,2);
+  }
+  tick(); setInterval(tick,1000);
+})();
+</script>
+</body>
+</html>
