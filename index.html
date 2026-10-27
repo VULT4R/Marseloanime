@@ -3351,7 +3351,22 @@
     .auth-actions .btn{justify-content:center;padding:13px 20px;font-size:13.5px;text-decoration:none}
     .auth-fine{margin-top:16px;text-align:center;font-size:11.5px;color:var(--muted);line-height:1.6}
     .auth-fine a{color:var(--accent-2);text-decoration:none}
-    @media(max-width:700px){.auth-zone{left:14px;bottom:14px}.auth-btn{width:46px;padding:0;justify-content:center}.auth-btn span{display:none}.auth-body{padding:34px 22px 26px}}
+    @media(max-width:700px){.auth-body{padding:34px 22px 26px}}
+
+    /* ═══ LOGIN PILL: floating top-right, beside the header dock ═══ */
+    .auth-zone{left:auto;bottom:auto;top:20px;right:14px;z-index:250}
+    .auth-btn{height:48px;padding:0 26px;border-radius:999px;border:1px solid rgba(255,190,130,.5);background:linear-gradient(135deg,#ff9a4d,#ff7a1a 55%,#e55f00);color:#fff;font:600 14px 'Inter',sans-serif;letter-spacing:.01em;box-shadow:0 14px 34px -12px rgba(255,122,26,.8),0 0 30px -10px rgba(255,150,70,.6),inset 0 1px 0 rgba(255,255,255,.38);position:relative;overflow:hidden;white-space:nowrap}
+    .auth-btn::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.34) 50%,transparent 65%);transform:translateX(-130%);transition:transform .8s var(--ease)}
+    .auth-btn:hover::after{transform:translateX(130%)}
+    .auth-btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 20px 40px -12px rgba(255,122,26,.95),0 0 36px -8px rgba(255,150,70,.7),inset 0 1px 0 rgba(255,255,255,.45)}
+    .auth-btn:active{transform:scale(.97)}
+    .auth-avatar{width:48px;height:48px}
+    .auth-menu{bottom:auto;top:calc(100% + 12px);left:auto;right:0;transform:translateY(-8px) scale(.97);transform-origin:top right}
+    .auth-zone.open .auth-menu{transform:none}
+    /* leave room for the pill: header sits to its left */
+    header{width:min(1200px,calc(100% - 140px));margin-left:14px;margin-right:auto}
+    @media(min-width:1540px){header{margin-left:auto;margin-right:auto}}
+    @media(max-width:900px){.auth-zone{top:12px;right:8px}.auth-btn{height:44px;padding:0 16px;font-size:13px}.auth-avatar{width:44px;height:44px}header{width:calc(100% - 100px);margin-left:8px}}
   </style>
 
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
@@ -3737,7 +3752,7 @@
   </div>
 
   <div class="auth-zone" id="auth-zone">
-        <button class="auth-btn" id="auth-login-btn" title="Log in with AniList"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Log in</span></button>
+        <button class="auth-btn" id="auth-login-btn" title="Log in with AniList">Log in</button>
         <button class="auth-avatar" id="auth-avatar" style="display:none" aria-label="Account menu" aria-haspopup="true"><img alt=""></button>
         <div class="auth-menu" id="auth-menu">
           <div class="auth-me"><img id="auth-me-img" alt=""><div><small>Signed in with AniList</small><strong id="auth-name"></strong></div></div>
@@ -4857,6 +4872,9 @@
       host.querySelectorAll('.cat-row').forEach(r => io.observe(r));
     })();
 
+    // ========== ANILIST LOGIN ==========
+    // 1) Create an API client at https://anilist.co/settings/developer
+    // 2) Paste its numeric Client ID below
     const ANILIST_CLIENT_ID = '55155';
 
     (function () {
