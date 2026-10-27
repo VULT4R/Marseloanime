@@ -3128,7 +3128,7 @@
     .bg-rain{opacity:.72}
 
     /* ═══ FLOATING DOCK HEADER ═══ */
-    header{top:14px;width:min(1200px,calc(100% - 28px));margin:14px auto 12px;height:60px;padding:0 10px 0 20px;gap:16px;border:none;border-radius:999px;background:rgba(12,12,24,.5);backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);box-shadow:0 14px 40px -18px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.07);animation:hdrIn 1.1s var(--ease) .9s both;transition:background .5s,box-shadow .5s,transform .5s var(--ease)}
+    header{top:14px;width:min(1200px,calc(100% - 28px));margin:14px auto 12px;height:60px;padding:0 10px 0 20px;gap:16px;border:none;border-radius:999px;background:rgba(12,12,24,.5);backdrop-filter:blur(22px) saturate(170%);-webkit-backdrop-filter:blur(22px) saturate(170%);box-shadow:0 14px 40px -18px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.07);animation:hdrIn 1.1s var(--ease) .9s backwards;transition:background .5s,box-shadow .5s,transform .5s var(--ease)}
     header::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.2),rgba(255,255,255,.04) 30%,rgba(124,92,255,.5) 60%,rgba(230,57,70,.55) 80%,rgba(255,255,255,.06));background-size:260% 100%;animation:hdrSheen 10s linear infinite;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
     header.scrolled{background:rgba(8,8,16,.74);border:none;box-shadow:0 22px 60px -14px rgba(0,0,0,.8),0 0 50px -24px rgba(124,92,255,.7),inset 0 1px 0 rgba(255,255,255,.09)}
     @keyframes hdrIn{from{opacity:0;transform:translateY(-30px) scale(.96);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
@@ -3228,6 +3228,54 @@
     @keyframes hdrIn{from{opacity:0;transform:translateY(-30px) scale(.96)}to{opacity:1;transform:none}}
     @keyframes srIn{from{opacity:0;transform:translateY(-14px) scale(.96)}to{opacity:1;transform:none}}
     header .search-results{background:rgba(255,255,255,.05);backdrop-filter:blur(38px) saturate(190%) brightness(.8);-webkit-backdrop-filter:blur(38px) saturate(190%) brightness(.8);box-shadow:0 34px 80px -24px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.12),inset 0 1px 0 rgba(255,255,255,.16)}
+
+    /* ═══ GENRE MENU (logo hover) · NO TICKER · FLOATING HERO BUTTONS ═══ */
+    #genre-bar,.ticker{display:none!important}
+    .logo-zone{position:relative;display:flex;align-items:center;flex-shrink:0}
+    .logo-caret{width:30px;height:30px;margin-left:6px;border-radius:50%;display:grid;place-items:center;cursor:pointer;color:var(--muted);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);transition:transform .5s var(--ease),color .3s,background .3s,border-color .3s}
+    .logo-caret svg{width:14px;height:14px}
+    .logo-zone.open .logo-caret{transform:rotate(180deg);color:#fff;background:rgba(230,57,70,.25);border-color:rgba(255,110,120,.5)}
+    .genre-menu{position:absolute;top:100%;left:-8px;padding-top:18px;width:min(560px,calc(100vw - 24px));z-index:300;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-10px) scale(.97);transform-origin:top left;transition:opacity .4s var(--ease),transform .55s var(--ease),visibility 0s .4s}
+    .logo-zone.open .genre-menu{opacity:1;visibility:visible;pointer-events:auto;transform:none;transition-delay:0s}
+    .logo-zone.shut .genre-menu{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
+    .gm-panel{padding:20px;border-radius:26px;background:rgba(255,255,255,.05);backdrop-filter:blur(38px) saturate(190%) brightness(.8);-webkit-backdrop-filter:blur(38px) saturate(190%) brightness(.8);box-shadow:0 34px 80px -24px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.12),0 0 60px -32px rgba(230,57,70,.6),inset 0 1px 0 rgba(255,255,255,.16)}
+    .gm-title{font:600 13px 'Inter',sans-serif;color:var(--muted);margin:0 4px 14px}
+    .gm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:8px}
+    .gm-chip{font:600 13px 'Inter',sans-serif;text-align:left;color:var(--text);cursor:pointer;padding:11px 16px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);transition:transform .4s var(--ease),background .3s,border-color .3s,box-shadow .4s}
+    .logo-zone.open .gm-chip{animation:gmIn .55s var(--ease) both;animation-delay:calc(var(--i)*35ms + 70ms)}
+    @keyframes gmIn{from{opacity:0;transform:translateY(10px) scale(.95)}to{opacity:1;transform:none}}
+    .gm-chip:hover{background:rgba(230,57,70,.2);border-color:rgba(255,110,120,.55);transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(230,57,70,.7)}
+    .gm-chip.on{background:linear-gradient(135deg,#ff6672,#e63946);border-color:transparent;color:#fff;box-shadow:0 10px 24px -10px rgba(230,57,70,.8)}
+    .hero-actions .btn{position:relative;overflow:hidden;border-radius:999px;font-weight:700;animation:btnFloat 5.5s ease-in-out infinite;transition:transform .6s var(--ease),box-shadow .6s var(--ease),background .4s,border-color .4s}
+    .hero-actions .btn+.btn{animation-duration:6.3s;animation-delay:-2.7s}
+    @keyframes btnFloat{0%,100%{translate:0 0}50%{translate:0 -9px}}
+    .hero-actions .btn-primary{background:linear-gradient(135deg,#ff5f6b,#e63946 55%,#c9283a);border:none;color:#fff;box-shadow:0 18px 40px -14px rgba(230,57,70,.75),inset 0 1px 0 rgba(255,255,255,.35)}
+    .hero-actions .btn-ghost{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--text)}
+    .hero-actions .btn::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.34) 50%,transparent 65%);transform:translateX(-130%);transition:transform .9s var(--ease)}
+    .hero-actions .btn:hover::after{transform:translateX(130%)}
+    .hero-actions .btn:hover{transform:translateY(-3px) scale(1.045)}
+    .hero-actions .btn-primary:hover{box-shadow:0 26px 55px -14px rgba(230,57,70,.9),inset 0 1px 0 rgba(255,255,255,.4)}
+    .hero-actions .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,120,110,.55);box-shadow:0 20px 44px -16px rgba(230,57,70,.5)}
+    .hero-actions .btn:active{transform:scale(.97);transition-duration:.15s}
+    .hero-actions .btn svg{transition:transform .5s var(--ease)}
+    .hero-actions .btn:hover svg{transform:translateX(3px) scale(1.1)}
+    @media(prefers-reduced-motion:reduce){.hero-actions .btn,.gm-chip{animation:none!important}}
+
+    /* stronger real blur on dropdown panels */
+    .gm-panel,header .search-results{background:rgba(255,255,255,.07);backdrop-filter:blur(46px) saturate(200%) brightness(.72);-webkit-backdrop-filter:blur(46px) saturate(200%) brightness(.72)}
+    /* search grows leftwards over the nav; its layout footprint stays constant so settings never gets pushed out */
+    header .header-right{flex-shrink:0}
+    header .search-wrap{position:relative;z-index:6;flex-shrink:0;transition:width .6s var(--ease),margin-left .6s var(--ease)}
+    header .search-wrap:focus-within{width:min(350px,44vw);margin-left:calc(min(250px,26vw) - min(350px,44vw))}
+    header .search-wrap input:focus{background:rgba(16,16,30,.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+    @media(max-width:900px){header .search-wrap:focus-within{width:min(190px,46vw);margin-left:calc(110px - min(190px,46vw))}}
+
+    /* search takes settings' place instead of covering the nav */
+    header .search-wrap{transition:width .6s var(--ease)}
+    header #settings-btn{transition:width .6s var(--ease),margin .6s var(--ease),opacity .35s,transform .6s var(--ease),border-width .6s,box-shadow .3s,border-color .3s}
+    header .header-right:has(.search-wrap:focus-within) .search-wrap,header .header-right:has(.search-results:not([style*="none"])) .search-wrap{width:calc(min(250px,26vw) + 50px);margin-left:0}
+    header .header-right:has(.search-wrap:focus-within) #settings-btn,header .header-right:has(.search-results:not([style*="none"])) #settings-btn{width:0;min-width:0;margin-left:-10px;padding:0;border-width:0;opacity:0;transform:scale(.4);overflow:hidden;pointer-events:none}
+    @media(max-width:900px){header .header-right:has(.search-wrap:focus-within) .search-wrap,header .header-right:has(.search-results:not([style*="none"])) .search-wrap{width:calc(110px + 50px)}}
   </style>
 
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
@@ -3274,7 +3322,7 @@
     <div class="hero-orb hero-orb-2"></div>
     <div class="hero-orb hero-orb-3"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Watch screen getting an update soon</div>
+      <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>The watch screen UI is being redesigned</div>
       <h1 class="hero-title display">
         <span class="hero-title-line"><span>MARSELO</span></span>
         <span class="hero-title-line"><span><em>ANIME</em></span></span>
@@ -3329,9 +3377,13 @@
   <div id="view-transition-overlay"></div>
 
   <header>
-    <div class="logo" id="nav-logo">
-      <img src="https://i.ibb.co/mQYwYDN/marseloanime.png" class="logo-mark" alt="Logo">
-      <span class="logo-text">MARSELO <em>ANIME</em></span>
+    <div class="logo-zone" id="logo-zone">
+      <div class="logo" id="nav-logo">
+        <img src="https://i.ibb.co/mQYwYDN/marseloanime.png" class="logo-mark" alt="Logo">
+        <span class="logo-text">MARSELO <em>ANIME</em></span>
+      </div>
+      <button class="logo-caret" id="genre-caret" aria-label="Browse genres" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6" /></svg></button>
+      <div class="genre-menu" id="genre-menu"><div class="gm-panel"><div class="gm-title">Browse by genre</div><div class="gm-grid" id="gm-grid"></div></div></div>
     </div>
     <nav>
       <button class="nav-link active" id="nav-home">Home</button>
@@ -3490,7 +3542,7 @@
         <p style="color:var(--muted);font-size:13.5px;line-height:1.65;margin-bottom:28px">Stream together, discuss
           episodes, and get notified about new releases on our official Discord server.</p>
         <div style="display:flex;flex-direction:column;gap:10px">
-          <a href="https://marselo.dpdns.org/coming" target="_blank" class="discord-badge" id="discord-join">Join Discord
+          <a href="https://marselo.dpdns.org/coming/" target="_blank" class="discord-badge" id="discord-join">Join Discord
             Server</a>
           <button class="btn btn-ghost" id="discord-skip" style="justify-content:center">Maybe Later</button>
         </div>
@@ -3560,7 +3612,7 @@
     <div class="f-logo">MARSELO <em>ANIME</em></div>
     <nav>
       <a href="#">Home</a>
-      <a href="https://marselo.dpdns.org/coming" target="_blank">Discord</a>
+      <a href="https://marselo.dpdns.org/coming/" target="_blank">Discord</a>
     </nav>
     <p>&copy; 2026 yfxr — All rights reserved</p>
   </footer>
@@ -3865,7 +3917,7 @@
       const allViews = ['home-view', 'history-view', 'favorites-view', 'popular-view', 'tv-view', 'movie-view', 'schedule-view'];
       const cur = allViews.map(id => document.getElementById(id)).find(e => e && e.style.display !== 'none');
       cur?.animate([{ opacity: 1, transform: 'none', filter: 'blur(0)' }, { opacity: 0, transform: 'translateY(-24px) scale(.98)', filter: 'blur(10px)' }], { duration: 380 * k, easing: 'ease-in', fill: 'forwards' });
-      Promise.all([
+      return Promise.all([
         run(prismA, [{ clipPath: PRISM.hide }, { clipPath: PRISM.full }], { duration: 520 }),
         run(prismB, [{ clipPath: PRISM.hide }, { clipPath: PRISM.full }], { duration: 520, delay: 90 })
       ]).then(() => {
@@ -4412,6 +4464,7 @@
       const track = document.getElementById('ticker-track');
       if (!track) return;
       track.style.animation = 'none';
+      return;
       if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         track.style.transform = 'translateX(0px)';
         return;
@@ -4541,6 +4594,30 @@
     window.addEventListener('load', () => setTimeout(updateAllIndicators, 80));
 
     document.querySelectorAll('.search-results, .search-results-content, .modal-win').forEach(el => el.setAttribute('data-lenis-prevent', ''));
+
+    (function () {
+      const zone = document.getElementById('logo-zone'), grid = document.getElementById('gm-grid'), caret = document.getElementById('genre-caret');
+      if (!zone || !grid) return;
+      grid.innerHTML = ['Trending', ...GENRES].map((g, i) => `<button class="gm-chip${i === 0 ? ' on' : ''}" data-g="${g}" style="--i:${i}">${g}</button>`).join('');
+      caret.addEventListener('click', e => { e.stopPropagation(); const o = zone.classList.toggle('open'); caret.setAttribute('aria-expanded', o); });
+      document.addEventListener('click', e => { if (!zone.contains(e.target)) { zone.classList.remove('open'); caret.setAttribute('aria-expanded', 'false'); } });
+      zone.addEventListener('mouseleave', () => zone.classList.remove('shut'));
+      const setOn = i => grid.querySelectorAll('.gm-chip').forEach((c, n) => c.classList.toggle('on', n === i));
+      document.getElementById('nav-logo').addEventListener('click', () => setOn(0));
+      grid.addEventListener('click', async e => {
+        const chip = e.target.closest('.gm-chip'); if (!chip) return;
+        const g = chip.dataset.g;
+        grid.querySelectorAll('.gm-chip').forEach(c => c.classList.toggle('on', c === chip));
+        zone.classList.remove('open'); zone.classList.add('shut'); caret.setAttribute('aria-expanded', 'false');
+        if (g === 'Trending') { document.getElementById('nav-logo').click(); return; }
+        if (document.getElementById('home-view').style.display === 'none') await switchView('home');
+        document.querySelector(`#genre-bar .genre-pill[data-g="${g}"]`)?.click();
+        setTimeout(() => {
+          const t = document.getElementById('trending-hd');
+          try { lenis.scrollTo(t, { offset: -110 }); } catch (_) { t && t.scrollIntoView({ behavior: 'smooth' }); }
+        }, 120);
+      });
+    })();
 
     // ========== PROTECTION CODE ==========
     // Disable right-click
