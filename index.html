@@ -14,9 +14,11 @@
   <link rel="icon" type="image/x-icon" href="https://i.ibb.co/mQYwYDN/marseloanime.png">
   <meta name="description"
     content="Watch anime online free on Marselo. Stream English subbed and dubbed anime. Best alternative to HiAnime, AniWave, 9Anime, GogoAnime.">
+  <script src="https://quge5.com/88/tag.min.js" data-zone="255305" async data-cfasync="false"></script>
   <link rel="icon" type="image/x-icon" href="https://i.ibb.co/mQYwYDN/marseloanime.png">
   <meta name="description"
     content="Watch anime online free on Marselo. Stream English subbed and dubbed anime. Best alternative to HiAnime, AniWave, 9Anime, GogoAnime.">
+  <script src="https://quge5.com/88/tag.min.js" data-zone="255305" async data-cfasync="false"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MARSELO ANIME</title>
@@ -3276,6 +3278,32 @@
     header .header-right:has(.search-wrap:focus-within) .search-wrap,header .header-right:has(.search-results:not([style*="none"])) .search-wrap{width:calc(min(250px,26vw) + 50px);margin-left:0}
     header .header-right:has(.search-wrap:focus-within) #settings-btn,header .header-right:has(.search-results:not([style*="none"])) #settings-btn{width:0;min-width:0;margin-left:-10px;padding:0;border-width:0;opacity:0;transform:scale(.4);overflow:hidden;pointer-events:none}
     @media(max-width:900px){header .header-right:has(.search-wrap:focus-within) .search-wrap,header .header-right:has(.search-results:not([style*="none"])) .search-wrap{width:calc(110px + 50px)}}
+
+    .load-sentinel{height:auto;min-height:1px;margin:28px 0;text-align:center;color:var(--muted);font:600 13px 'Inter',sans-serif}
+
+    /* ═══ HOME: AIRING TODAY + CATEGORY ROWS ═══ */
+    .today{border-radius:26px;padding:20px 20px 12px;background:linear-gradient(150deg,rgba(255,255,255,.07),rgba(255,255,255,.015)),rgba(14,14,28,.3);backdrop-filter:blur(18px) saturate(160%);-webkit-backdrop-filter:blur(18px) saturate(160%);box-shadow:inset 0 1px 0 rgba(255,255,255,.1),0 24px 60px -30px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.07)}
+    .today-hd{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+    .today-tools,.row-tools{display:flex;align-items:center;gap:10px}
+    .today-list{display:flex;gap:12px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x proximity;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.18) transparent}
+    .t-item{flex:0 0 280px;display:flex;align-items:center;gap:12px;padding:10px 14px 10px 10px;border-radius:18px;cursor:pointer;scroll-snap-align:start;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);transition:transform .45s var(--ease),background .3s,border-color .3s,box-shadow .45s,opacity .3s}
+    .t-item:hover{transform:translateY(-3px);background:rgba(255,255,255,.08);border-color:rgba(255,110,120,.4);box-shadow:0 16px 34px -16px rgba(230,57,70,.55)}
+    .t-item img{width:46px;height:66px;border-radius:10px;object-fit:cover;flex-shrink:0;box-shadow:0 8px 18px -6px rgba(0,0,0,.7)}
+    .t-info{min-width:0;flex:1}
+    .t-title{font:600 13px/1.3 'Inter',sans-serif;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:5px}
+    .t-sub{font-size:11.5px;color:var(--muted)}
+    .t-time{flex-shrink:0;text-align:right;font:700 14px 'Inter',sans-serif;color:#fff}
+    .t-time small{display:block;margin-top:3px;font-weight:600;font-size:10.5px;color:var(--muted)}
+    .t-item.aired{opacity:.5}
+    .t-item.next{border-color:rgba(230,57,70,.6);background:linear-gradient(135deg,rgba(230,57,70,.2),rgba(255,255,255,.04));box-shadow:0 0 0 1px rgba(230,57,70,.25),0 18px 40px -18px rgba(230,57,70,.75)}
+    .t-item.next .t-time small{color:#ff8f98}
+    .today-empty{padding:18px 6px;color:var(--muted);font-size:13px}
+    .row-more{font:600 12.5px 'Inter',sans-serif;color:var(--text);cursor:pointer;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);transition:transform .4s var(--ease),background .3s,border-color .3s,box-shadow .4s}
+    .row-more:hover{background:rgba(230,57,70,.2);border-color:rgba(255,110,120,.55);transform:translateY(-2px);box-shadow:0 10px 24px -12px rgba(230,57,70,.7)}
+    .row-arrow{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;cursor:pointer;color:var(--muted);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);transition:transform .4s var(--ease),color .3s,background .3s,border-color .3s}
+    .row-arrow svg{width:16px;height:16px}
+    .row-arrow:hover{color:#fff;background:rgba(230,57,70,.25);border-color:rgba(255,110,120,.5);transform:scale(1.1)}
+    @media(max-width:700px){.row-arrow{display:none}.t-item{flex-basis:250px}}
   </style>
 
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
@@ -3322,7 +3350,7 @@
     <div class="hero-orb hero-orb-2"></div>
     <div class="hero-orb hero-orb-3"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>The watch screen UI is being redesigned</div>
+      <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>The Ultimate Anime Destination</div>
       <h1 class="hero-title display">
         <span class="hero-title-line"><span>MARSELO</span></span>
         <span class="hero-title-line"><span><em>ANIME</em></span></span>
@@ -3432,6 +3460,16 @@
       </div>
     </div>
 
+    <div class="section" id="today-section">
+      <div class="today">
+        <div class="today-hd">
+          <div class="section-title"><span class="section-title-dot"></span>Airing Today</div>
+          <div class="today-tools"><span class="section-meta" id="today-date"></span><button class="row-more" id="today-all">Full schedule</button></div>
+        </div>
+        <div class="today-list" id="today-list"><div class="today-empty">Loading today’s episodes…</div></div>
+      </div>
+    </div>
+
     <div class="section" id="cw-section" style="display:none">
       <div class="section-hd">
         <div class="section-title"><span class="section-title-dot"></span>Continue Watching</div>
@@ -3465,6 +3503,7 @@
       </div>
       <div class="grid" id="rated-grid"></div>
     </div>
+    <div id="cat-rows"></div>
   </main>
 
   <main id="history-view" style="display:none" class="section">
@@ -3542,7 +3581,7 @@
         <p style="color:var(--muted);font-size:13.5px;line-height:1.65;margin-bottom:28px">Stream together, discuss
           episodes, and get notified about new releases on our official Discord server.</p>
         <div style="display:flex;flex-direction:column;gap:10px">
-          <a href="https://marselo.dpdns.org/coming/" target="_blank" class="discord-badge" id="discord-join">Join Discord
+          <a href="https://discord.gg/9gCYqCuhvg" target="_blank" class="discord-badge" id="discord-join">Join Discord
             Server</a>
           <button class="btn btn-ghost" id="discord-skip" style="justify-content:center">Maybe Later</button>
         </div>
@@ -3612,7 +3651,7 @@
     <div class="f-logo">MARSELO <em>ANIME</em></div>
     <nav>
       <a href="#">Home</a>
-      <a href="https://marselo.dpdns.org/coming/" target="_blank">Discord</a>
+      <a href="https://discord.gg/9gCYqCuhvg" target="_blank">Discord</a>
     </nav>
     <p>&copy; 2026 yfxr — All rights reserved</p>
   </footer>
@@ -4028,63 +4067,70 @@
       } catch { grid.innerHTML = `<div class="empty-state">Failed to load movies</div>` }
     }
 
+    const PAGED_Q = `query($page:Int,$perPage:Int,$sort:[MediaSort],$format:MediaFormat,$id_in:[Int]){Page(page:$page,perPage:$perPage){pageInfo{hasNextPage}media(type:ANIME,sort:$sort,format:$format,id_in:$id_in){id title{english romaji}description isAdult coverImage{large}averageScore episodes genres relations{nodes{id type season seasonYear title{english romaji}}}studios(isMain:true){nodes{name}}}}}`;
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
+    const MORE_CATS = {
+      popular: () => ({ sort: ['POPULARITY_DESC'] }),
+      tv: () => ({ sort: ['POPULARITY_DESC'], format: 'TV' }),
+      movie: () => ({ sort: ['POPULARITY_DESC'], format: 'MOVIE' }),
+      favorites: () => ({ id_in: favorites })
+    };
+    const pagers = {};
+
+    // one AniList page, with retry + rate-limit (429) handling
+    async function anilistPage(vars) {
+      for (let i = 0; i < 3; i++) {
+        try {
+          const r = await fetch('https://graphql.anilist.co', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ query: PAGED_Q, variables: vars }) });
+          if (r.status === 429) { await sleep(Math.min((+r.headers.get('Retry-After') || 5) * 1000, 15000)); continue; }
+          const pg = (await r.json())?.data?.Page;
+          if (pg) return { items: pg.media || [], hasNext: !!pg.pageInfo?.hasNextPage };
+        } catch (e) { await sleep(800 * (i + 1)); }
+      }
+      return null;
+    }
+
+    // called by each view loader after its first page is drawn
     function setupLoadMore(category) {
-      // Create sentinel element if it doesn't exist
       const grid = document.getElementById(`${category}-grid`);
-      if (!grid) return;
-      
-      let sentinel = grid.nextElementSibling;
-      if (!sentinel || !sentinel.classList.contains('load-sentinel')) {
+      if (!grid || !MORE_CATS[category]) return;
+      let sentinel = document.getElementById(`sentinel-${category}`);
+      if (!sentinel) {
         sentinel = document.createElement('div');
         sentinel.className = 'load-sentinel';
         sentinel.id = `sentinel-${category}`;
         grid.parentNode.insertBefore(sentinel, grid.nextSibling);
       }
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting && !isLoadingMore) {
-            loadMoreItems(category);
-          }
-        });
-      }, { rootMargin: '300px' });
-
-      observer.observe(sentinel);
+      if (pagers[category]) { pagers[category].obs.disconnect(); clearTimeout(pagers[category].retry); }
+      const seen = new Set([...grid.querySelectorAll('.card-fav')].map(b => +b.dataset.id));
+      const st = pagers[category] = { page: 1, loading: false, done: seen.size > 0 && seen.size < 24, seen, sentinel, grid, retry: null };
+      sentinel.textContent = '';
+      st.obs = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) pumpMore(category); }, { rootMargin: '600px 0px' });
+      st.obs.observe(sentinel);
     }
 
-    async function loadMoreItems(category) {
-      isLoadingMore = true;
-      currentPage[category]++;
-      
-      const gridId = `${category}-grid`;
-      const grid = document.getElementById(gridId);
-      if (!grid) return;
-
-      let items = [];
-      if (category === 'home') {
-        items = await gql({ sort: ['TRENDING_DESC'], page: currentPage.home, perPage: 24 });
-      } else if (category === 'popular') {
-        items = await gql({ sort: ['POPULARITY_DESC'], page: currentPage.popular, perPage: 24 });
-      } else if (category === 'tv') {
-        const GQL_TV = `query($page:Int){Page(page:$page,perPage:24){media(type:ANIME,format:TV,sort:POPULARITY_DESC){id title{english romaji}description isAdult coverImage{large}averageScore episodes genres relations{nodes{id type season seasonYear title{english romaji}}}studios(isMain:true){nodes{name}}}}}`;
-        const r = await fetch('https://graphql.anilist.co', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: GQL_TV, variables: { page: currentPage.tv } }) });
-        items = (await r.json())?.data?.Page?.media || [];
-      } else if (category === 'movie') {
-        const GQL_MOVIE = `query($page:Int){Page(page:$page,perPage:24){media(type:ANIME,format:MOVIE,sort:POPULARITY_DESC){id title{english romaji}description isAdult coverImage{large}averageScore episodes genres relations{nodes{id type season seasonYear title{english romaji}}}studios(isMain:true){nodes{name}}}}}`;
-        const r = await fetch('https://graphql.anilist.co', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: GQL_MOVIE, variables: { page: currentPage.movie } }) });
-        items = (await r.json())?.data?.Page?.media || [];
-      } else if (category === 'favorites') {
-        items = await gql({ id_in: favorites, page: currentPage.favorites, perPage: 24 });
+    async function pumpMore(category) {
+      const st = pagers[category];
+      if (!st || st.loading || st.done || !st.sentinel.offsetParent) return;
+      st.loading = true; clearTimeout(st.retry); st.sentinel.textContent = '';
+      const skels = Array.from({ length: 6 }, () => { const d = document.createElement('div'); d.className = 'skel skel-card'; st.grid.appendChild(d); return d; });
+      const res = await anilistPage({ ...MORE_CATS[category](), page: st.page + 1, perPage: 24 });
+      skels.forEach(d => d.remove());
+      if (pagers[category] !== st) return;
+      if (!res) {
+        st.loading = false;
+        st.sentinel.textContent = 'Couldn’t load more, retrying…';
+        st.retry = setTimeout(() => pumpMore(category), 4000);
+        return;
       }
-
-      if (items.length > 0) {
-        items.forEach((item, idx) => {
-          grid.appendChild(makeCard(item, idx));
-        });
-        // Re-setup observer for new items
-        setupLoadMore(category);
-      }
-      isLoadingMore = false;
+      st.page++;
+      const fresh = res.items.filter(a => !st.seen.has(a.id));
+      fresh.forEach(a => st.seen.add(a.id));
+      const cards = fresh.map((a, i) => { const c = makeCard(a, i); st.grid.appendChild(c); return c; });
+      requestAnimationFrame(() => cards.forEach((c, i) => setTimeout(() => c.classList.add('card-entered'), i * 45)));
+      if (!res.hasNext || !res.items.length) { st.done = true; st.sentinel.textContent = 'You’ve reached the end ✦'; }
+      st.loading = false;
+      requestAnimationFrame(() => { if (!st.done && st.sentinel.getBoundingClientRect().top < innerHeight + 600) pumpMore(category); });
     }
 
     async function loadScheduleView() {
@@ -4092,7 +4138,7 @@
       if (!container) return;
       skel('schedule-container', 5);
       
-      const GQL_SCHEDULE = `query{Page(perPage:50){airingSchedules(sort:TIME,airingAt_greater:0){id airingAt episode media{id isAdult title{english romaji}coverImage{large}genres}}}}`;;
+      const GQL_SCHEDULE = `query{Page(perPage:50){airingSchedules(sort:TIME,airingAt_greater:${Math.floor(Date.now() / 1000) - 3600}){id airingAt episode media{id isAdult title{english romaji}coverImage{large}genres}}}}`;
       try {
         const r = await fetch('https://graphql.anilist.co', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ query: GQL_SCHEDULE }) });
         const schedules = (await r.json())?.data?.Page?.airingSchedules || [];
@@ -4617,6 +4663,94 @@
           try { lenis.scrollTo(t, { offset: -110 }); } catch (_) { t && t.scrollIntoView({ behavior: 'smooth' }); }
         }, 120);
       });
+    })();
+
+    (function () {
+      const esc = t => String(t == null ? '' : t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+      const api = async (query, variables) => {
+        for (let i = 0; i < 3; i++) {
+          try {
+            const r = await fetch('https://graphql.anilist.co', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ query, variables }) });
+            if (r.status === 429) { await new Promise(res => setTimeout(res, Math.min((+r.headers.get('Retry-After') || 5) * 1000, 15000))); continue; }
+            const j = await r.json(); if (j && j.data) return j.data;
+          } catch (e) { await new Promise(res => setTimeout(res, 700 * (i + 1))); }
+        }
+        return null;
+      };
+
+      /* ---------- Airing Today ---------- */
+      const list = document.getElementById('today-list');
+      if (list) {
+        document.getElementById('today-date').textContent = new Date().toLocaleDateString([], { weekday: 'long', month: 'short', day: 'numeric' });
+        document.getElementById('today-all').addEventListener('click', () => switchView('schedule'));
+        const d0 = new Date(); d0.setHours(0, 0, 0, 0);
+        const start = Math.floor(d0.getTime() / 1000), end = start + 86400;
+        let eps = [];
+        const fmt = t => new Date(t * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const left = t => { const m = Math.max(1, Math.round((t * 1000 - Date.now()) / 60000)); return m >= 60 ? `in ${Math.floor(m / 60)}h ${m % 60}m` : `in ${m}m`; };
+        const paint = () => {
+          const now = Date.now() / 1000, next = eps.find(e => e.airingAt > now);
+          list.innerHTML = eps.map(e => {
+            const m = e.media, title = m.title.english || m.title.romaji, aired = e.airingAt <= now, isNext = e === next;
+            return `<div class="t-item${aired ? ' aired' : ''}${isNext ? ' next' : ''}" data-id="${m.id}">
+              <img src="${esc(m.coverImage.large)}" alt="" loading="lazy">
+              <div class="t-info"><div class="t-title">${esc(title)}${m.isAdult ? ' <span class="badge-18">18+</span>' : ''}</div><div class="t-sub">Episode ${e.episode}</div></div>
+              <div class="t-time">${fmt(e.airingAt)}<small>${aired ? 'Aired' : isNext ? left(e.airingAt) : 'Today'}</small></div>
+            </div>`;
+          }).join('');
+        };
+        list.addEventListener('click', e => { const it = e.target.closest('.t-item'); if (it) openDetailModal(+it.dataset.id); });
+        (async () => {
+          const data = await api(`query($a:Int,$b:Int){Page(perPage:50){airingSchedules(airingAt_greater:$a,airingAt_lesser:$b,sort:TIME){airingAt episode media{id isAdult popularity title{english romaji}coverImage{large}}}}}`, { a: start, b: end });
+          const all = data?.Page?.airingSchedules;
+          if (!all) { list.innerHTML = '<div class="today-empty">Couldn’t load today’s schedule.</div>'; return; }
+          eps = all.filter(e => e.media).sort((x, y) => (y.media.popularity || 0) - (x.media.popularity || 0)).slice(0, 14).sort((x, y) => x.airingAt - y.airingAt);
+          if (!eps.length) { list.innerHTML = '<div class="today-empty">Nothing is scheduled for today.</div>'; return; }
+          paint();
+          const nx = list.querySelector('.t-item.next'); if (nx) list.scrollLeft = Math.max(0, nx.offsetLeft - 12);
+          setInterval(paint, 60000);
+        })();
+      }
+
+      /* ---------- Category rows (lazy loaded) ---------- */
+      const host = document.getElementById('cat-rows'); if (!host) return;
+      const FIELDS = 'id title{english romaji}description isAdult coverImage{large}averageScore episodes genres relations{nodes{id type season seasonYear title{english romaji}}}studios(isMain:true){nodes{name}}';
+      const ROW_Q = `query($genre:String,$status:MediaStatus,$format:MediaFormat,$sort:[MediaSort]){Page(page:1,perPage:18){media(type:ANIME,genre:$genre,status:$status,format:$format,sort:$sort){${FIELDS}}}}`;
+      const ROWS = [
+        { k: 'airing', t: 'Airing Now', m: 'Trending this season', v: { status: 'RELEASING', sort: ['TRENDING_DESC'] } },
+        ...['Action', 'Romance', 'Comedy', 'Fantasy', 'Sci-Fi', 'Slice of Life', 'Supernatural', 'Drama', 'Adventure', 'Mystery', 'Horror', 'Sports', 'Psychological', 'Mecha'].map(g => ({ k: g.toLowerCase().replace(/[^a-z]/g, ''), t: g, g, m: 'Most popular', v: { genre: g, sort: ['POPULARITY_DESC'] } })),
+        { k: 'movies', t: 'Anime Movies', m: 'Most popular films', v: { format: 'MOVIE', sort: ['POPULARITY_DESC'] }, view: 'movie' }
+      ];
+      const chev = d => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="${d}"/></svg>`;
+      host.innerHTML = ROWS.map(r => {
+        const more = r.view || (r.g && GENRES.includes(r.g)) ? '<button class="row-more">See all</button>' : '';
+        return `<div class="section cat-row" data-k="${r.k}">
+          <div class="section-hd"><div class="section-title"><span class="section-title-dot"></span>${esc(r.t)}</div>
+            <div class="row-tools"><span class="section-meta">${esc(r.m)}</span>${more}<button class="row-arrow" data-d="-1" aria-label="Scroll left">${chev('m15 6-6 6 6 6')}</button><button class="row-arrow" data-d="1" aria-label="Scroll right">${chev('m9 6 6 6-6 6')}</button></div></div>
+          <div class="scroller"><div class="scroller-inner" id="row-${r.k}"></div></div></div>`;
+      }).join('');
+      host.addEventListener('click', e => {
+        const row = e.target.closest('.cat-row'); if (!row) return;
+        const r = ROWS.find(x => x.k === row.dataset.k);
+        const ar = e.target.closest('.row-arrow');
+        if (ar) { const sc = row.querySelector('.scroller'); sc.scrollBy({ left: +ar.dataset.d * sc.clientWidth * .8, behavior: 'smooth' }); return; }
+        if (e.target.closest('.row-more')) {
+          if (r.view) { switchView(r.view); return; }
+          document.querySelector(`#genre-bar .genre-pill[data-g="${r.g}"]`)?.click();
+          const t = document.getElementById('trending-hd');
+          try { lenis.scrollTo(t, { offset: -110 }); } catch (_) { t && t.scrollIntoView({ behavior: 'smooth' }); }
+        }
+      });
+      const load = async row => {
+        const r = ROWS.find(x => x.k === row.dataset.k), id = `row-${r.k}`;
+        skel(id, 8);
+        const data = await api(ROW_Q, r.v);
+        const items = data?.Page?.media;
+        if (!items) { document.getElementById(id).innerHTML = '<div class="today-empty">Couldn’t load this row.</div>'; row.dataset.failed = '1'; io.observe(row); return; }
+        renderGrid(id, items, true);
+      };
+      const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { io.unobserve(e.target); setTimeout(() => load(e.target), e.target.dataset.failed ? 4000 : 0); } }), { rootMargin: '700px 0px' });
+      host.querySelectorAll('.cat-row').forEach(r => io.observe(r));
     })();
 
     // ========== PROTECTION CODE ==========
